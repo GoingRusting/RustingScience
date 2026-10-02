@@ -1,0 +1,32 @@
+/* RustingScience additions on top of gr.css. Tokens only, no new colours. */
+
+.sci-hero { min-height: 480px; }
+.sci-hero .gr-hero-body { padding-bottom: var(--space-16); }
+
+.sci-posts { padding-top: var(--space-16); padding-bottom: var(--space-24); }
+.sci-h2 { margin: var(--space-3) 0 var(--space-8); font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 44px; letter-spacing: -.01em; }
+.sci-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: var(--space-4); }
+.sci-tile { min-height: 280px; padding-right: var(--space-16); }
+.sci-tile .gr-tile-name { font-size: 24px; line-height: 1.15; }
+
+.sci-banner { height: 240px; }
+.sci-article { max-width: calc(var(--prose-max) + 96px); margin: 0 auto; }
+
+/* Markdown code blocks as GoingRusting code cards */
+.gr-prose pre { --c: var(--chamfer-lg); position: relative; margin: 0; padding: var(--space-4) var(--space-6); overflow-x: auto;
+  background: var(--surface-000); font-family: var(--font-mono); font-size: 14px; line-height: 22px; color: var(--ink-soft);
+  clip-path: polygon(var(--c) 0, 100% 0, 100% 100%, 0 100%, 0 var(--c)); box-shadow: inset 0 0 0 1px var(--line-200); }
+.gr-prose pre code { background: none; padding: 0; font-size: inherit; font-weight: 400; color: inherit; }
+
+/* Benchmark tables: numbers right-aligned in mono */
+.gr-prose table { width: 100%; }
+.gr-prose th + th { text-align: right; }
+.gr-prose td + td { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.gr-prose td strong { color: var(--accent); }
+
+@media (max-width: 720px) {
+  .sci-hero { min-height: 480px; }
+  .sci-hero .gr-hero-title { font-size: 56px; }
+  .sci-banner { height: 160px; }
+  .sci-tile { padding-right: var(--space-6); }
+}

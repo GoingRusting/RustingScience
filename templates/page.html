@@ -1,10 +1,26 @@
 {% extends "base.html" %}
-{% block title %}{{ page.title }} · {{ config.title }}{% endblock %}
+{% block theme %}{% set p = config.extra.projects[page.extra.project | default(value="engine")] %}{{ p.theme }}{% endblock %}
+{% block title %}{{ page.title }} · RustingScience{% endblock %}
 {% block description %}{{ page.description | default(value=config.description) }}{% endblock %}
 {% block content %}
-<article>
-  <h1>{{ page.title }}</h1>
-  <p class="meta"><time>{{ page.date }}</time> · {{ page.reading_time }} min read</p>
-  {{ page.content | safe }}
+{% set p = config.extra.projects[page.extra.project | default(value="engine")] %}
+<div class="gr-docs-banner sci-banner">
+  <div class="gr-scene" aria-hidden="true" data-kind="{{ p.scene }}" data-opt='{}'><canvas></canvas></div>
+</div>
+<article class="sci-article">
+  <div class="gr-docs-head">
+    <nav class="gr-crumbs" aria-label="Breadcrumb">
+      <a href="{{ config.base_url }}/">RustingScience</a><svg class="gr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg><span>{{ p.name }}</span>
+    </nav>
+    <h1 class="gr-docs-title">{{ page.title }}</h1>
+    <div class="gr-docs-meta">
+      <span class="gr-tag gr-tag-accent"><span class="gr-dot"></span>{{ p.name }}</span>
+      <span class="gr-tag">{{ page.date | date(format="%d %b %Y") }}</span>
+      <span class="gr-tag">{{ page.reading_time }} min read</span>
+    </div>
+  </div>
+  <div class="gr-prose">
+    {{ page.content | safe }}
+  </div>
 </article>
 {% endblock %}

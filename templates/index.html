@@ -1,11 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-{{ section.content | safe }}
-<h2>Posts</h2>
-<ul class="posts">
-{% set posts = get_section(path="posts/_index.md") %}
-{% for page in posts.pages %}
-  <li><time>{{ page.date }}</time> <a href="{{ page.permalink }}">{{ page.title }}</a></li>
-{% endfor %}
-</ul>
+<section class="gr-hero sci-hero">
+  <div class="gr-grid-bg"></div>
+  <div class="gr-scene" aria-hidden="true" data-kind="forge" data-opt='{}'><canvas></canvas></div>
+  <div class="gr-hero-shade"></div>
+  <div class="gr-container gr-hero-body">
+    <span class="gr-kicker">Research / Benchmarks / Notes</span>
+    <h1 class="gr-hero-title">Rusting<b>Science</b></h1>
+    <p class="gr-hero-tagline">What we measure while building the Rusting projects, and how we measured it.</p>
+    <p class="gr-hero-lede">One consumer GPU, real workloads, public scripts. When a number turns out wrong, the correction stays on the page.</p>
+    <div class="gr-hero-motto">BUILD. MEASURE. EXPLORE.</div>
+  </div>
+</section>
+
+<section class="gr-container sci-posts">
+  <span class="gr-kicker">Latest</span>
+  <h2 class="sci-h2">Posts</h2>
+  <div class="sci-grid">
+  {% set posts = get_section(path="posts/_index.md") %}
+  {% for page in posts.pages %}
+    {% set p = config.extra.projects[page.extra.project | default(value="engine")] %}
+    <a class="gr-tile sci-tile" href="{{ page.permalink }}" data-theme="{{ p.theme }}">
+      <div class="gr-scene" aria-hidden="true" data-kind="{{ p.scene }}" data-opt='{"density":0.45}'><canvas></canvas></div>
+      <div class="gr-tile-top"><span>{{ page.date | date(format="%d %b %Y") }}</span><em>{{ p.name }}</em></div>
+      <h3 class="gr-tile-name">{{ page.title }}</h3>
+      <p class="gr-tile-desc">{{ page.description }}</p>
+      <span class="gr-tile-go"><svg class="gr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg></span>
+    </a>
+  {% endfor %}
+  </div>
+</section>
 {% endblock %}

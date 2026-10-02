@@ -2,6 +2,9 @@
 title = "Training a 100M transformer in pure Rust: RustingBrain vs PyTorch and TensorFlow"
 date = 2026-10-02
 description = "A Rust deep-learning library with NVRTC-compiled CUDA kernels against torch.compile and XLA on one RTX 3060. Where it wins, where it loses, and a benchmark bug I shipped."
+
+[extra]
+project = "brain"
 +++
 
 [RustingBrain](https://github.com/GoingRusting/RustingBrain) is a deep-learning
