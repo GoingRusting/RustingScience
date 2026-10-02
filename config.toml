@@ -1,0 +1,10 @@
+base_url = "https://goingrusting.github.io/RustingScience"
+title = "RustingScience"
+description = "Benchmarks, experiments and research notes from the Rusting projects. Big workloads on one consumer GPU, in Rust."
+compile_sass = false
+build_search_index = false
+generate_feeds = true
+
+[extra]
+author = "Vasyl Trefilov"
+github = "https://github.com/GoingRusting"
