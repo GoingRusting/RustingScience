@@ -1,13 +1,12 @@
-+++
-title = "Training a 100M transformer in pure Rust: RustingBrain vs PyTorch and TensorFlow"
-date = 2026-10-02
-description = "A Rust deep-learning library with NVRTC-compiled CUDA kernels against torch.compile and XLA on one RTX 3060. Where it wins, where it loses, and a benchmark bug I shipped."
+---
+title: "Training a 100M transformer in pure Rust: RustingBrain vs PyTorch and TensorFlow"
+date: 2026-10-02
+description: "A Rust deep-learning library with NVRTC-compiled CUDA kernels against torch.compile and XLA on one RTX 3060. Where it wins, where it loses, and a benchmark bug I shipped."
+project: brain
+tags: [benchmark, deep learning, CUDA]
+---
 
-[extra]
-project = "brain"
-+++
-
-[RustingBrain](https://github.com/GoingRusting/RustingBrain) is a deep-learning
+[RustingBrain](https://github.com/RustingStudio/RustingBrain) is a deep-learning
 library I write in Rust. There is no Python in the training loop and no C++
 build step. The CUDA kernels are compiled at startup by NVRTC, and everything
 else is Rust.
@@ -197,5 +196,5 @@ logs, the same build ran 2.14× slower while another training job used the
 card.
 
 If you get different numbers, or you find a mistake in the method, open an
-issue on [RustingBrain](https://github.com/GoingRusting/RustingBrain/issues).
+issue on [RustingBrain](https://github.com/RustingStudio/RustingBrain/issues).
 I will add corrections to this post.

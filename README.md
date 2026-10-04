@@ -1,9 +1,30 @@
 # RustingScience
 
-Benchmarks and research notes from the Rusting projects, built with [Zola](https://www.getzola.org/).
+Benchmarks, experiments and research notes on Rust, GPUs and machine learning, from the RustingStudio projects and beyond.
 
-- Preview locally: `zola serve`, then open http://127.0.0.1:1111
-- New post: create `content/posts/<slug>/index.md`; put images and scripts next to it
-- Publish: push to `main`; `.github/workflows/deploy.yml` builds and deploys to GitHub Pages
-- Design: `static/gr.css` and `static/scene.js` come from `../GoingRustingWebSite`. Run `sh sync-design.sh` after changing the design there; edit only `static/science.css` here.
-- Post theme: set `[extra] project = "engine" | "brain" | "shader"` in a post's front matter to pick its colour and 3D scene.
+This repository holds only the posts. They are published on the RustingStudio website at https://rustingstudio.github.io/science/.
+
+## Writing a post
+
+Create `posts/<slug>/index.md`. The slug becomes the URL: `/science/<slug>/`. Put images, scripts and data next to `index.md` and link to them with relative paths.
+
+```markdown
+---
+title: "TensorFlow vs PyTorch vs RustingBrain"
+date: 2026-10-04
+description: "One or two sentences. Shown in the post list and in search results."
+tags: [benchmark, deep learning]
+project: brain   # optional: engine | brain | shader. Picks the colour and 3D scene. Omit for general topics.
+---
+
+The first paragraph says what the reader will know at the end.
+```
+
+- Do not start the body with a `# Title`. The site renders the title from the front matter.
+- Every number needs the script or the hardware that produced it.
+- HTML comments (`<!-- TODO -->`) are removed when the post is published.
+
+## Publishing
+
+1. Push the post to `main`.
+2. In the website repository, run `npm run sync-content` and commit the result.
